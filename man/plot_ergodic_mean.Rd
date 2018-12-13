@@ -6,6 +6,11 @@
 \usage{
 plot_ergodic_mean(object, thin = 0, burn_in = 0, ...)
 }
+\arguments{
+\item{thin}{A thinning parameter for the MCMC Chain}
+
+\item{burn_in}{A burn in parameter for the MCMC Chain}
+}
 \value{
 A series of plots for the ergodic mean of the parameters
 }

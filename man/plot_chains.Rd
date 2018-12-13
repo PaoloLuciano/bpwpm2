@@ -9,6 +9,8 @@ plot_chains(mcmc_chain, n = 100, title = "")
 \arguments{
 \item{mcmc_chain}{An MCMC Chain matrix. (draws * number of params)}
 
+\item{n}{Number of draws to plot}
+
 \item{title}{Title for the plot}
 }
 \value{
