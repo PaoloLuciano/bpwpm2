@@ -1,6 +1,5 @@
 # Math Utils for the bpwpm2 package
 #-------------------------------------------------------------------------------
-
 #' Piece wise polinomial expansion for X (PWP)
 #'
 #' Calculates and returns a new designer matrix, representing the correspondieng PWP
@@ -42,7 +41,6 @@ calculate_Psi <- function(X, M, J, K, n ,d, tau){
 }
 
 #-------------------------------------------------------------------------------
-
 #' F matrix calculation
 #'
 #' Function for calculating the F matrix, described on the thesis.
@@ -97,7 +95,6 @@ ergodic_mean <- function(mcmc_chain){
 }
 
 #-------------------------------------------------------------------------------
-
 #' Log Loss
 #'
 #' An implementation of the Log-Loss function for the binomial case
@@ -129,7 +126,6 @@ log_loss <- function(Y, p, eps = 1e-10, verb = TRUE){
 }
 
 #-------------------------------------------------------------------------------
-
 #' Calculate the Accuracy of the model
 #'
 #' Given a set of true values and their corresponding fitted probabilities,
@@ -197,7 +193,6 @@ contingency_table <- function(new_Y, p){
 }
 
 #-------------------------------------------------------------------------------
-
 #' Calculate prediction eta
 #'
 #' @param F_mat The PWP transformed input space, calculated by
@@ -244,7 +239,9 @@ model_eta <- function(new_X, bpwpm_params){
                          d = bpwpm_params$d,
                          tau = bpwpm_params$tau)
 
-    F_mat <- calculate_F(Psi = Psi,beta = bpwpm_params$beta, d = bpwpm_params$d)
+    F_mat <- calculate_F(Psi = Psi,
+                         beta = bpwpm_params$beta,
+                         d = bpwpm_params$d)
 
     return(calculate_eta(F_mat = F_mat))
 }

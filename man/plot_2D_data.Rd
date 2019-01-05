@@ -2,9 +2,18 @@
 % Please edit documentation in R/plot_funcs.R
 \name{plot_2D_data}
 \alias{plot_2D_data}
-\title{Scatter Plot of 2D data}
+\title{------------------------------------------------------------------------------
+Scatter Plot of 2D data}
 \usage{
-plot_2D_data(Y, X)
+plot_2D_data(Y, X, f_transform = FALSE)
+}
+\arguments{
+\item{Y}{A response vector of size n}
+
+\item{X}{An input matrix of size n*2.}
+
+\item{f_transform}{logical - To clarify whether or not, the names of the axes
+are the f transforms or the initial X's}
 }
 \value{
 A ggplot2 scatter plot

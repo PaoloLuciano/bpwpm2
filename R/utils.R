@@ -108,9 +108,8 @@ posterior_params <- function(bpwpm, burn_in, thin, type = 'mean'){
                    M = bpwpm$M,
                    J = bpwpm$J,
                    K = bpwpm$K,
-                   d = bpwpm$d,
-                   indep_terms = bpwpm$indep_terms)
-    class(params) <- 'bpwpm_params'
+                   d = bpwpm$d)
 
+    class(params) <- 'bpwpm_params'
     return(params)
 }

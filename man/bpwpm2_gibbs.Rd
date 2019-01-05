@@ -4,9 +4,10 @@
 \alias{bpwpm2_gibbs}
 \title{Bayesian Piece-Wise Polynomial Model 2 Algorithm}
 \usage{
-bpwpm2_gibbs(Y, X, M, J, K, draws = 10^3, tau = NULL, beta_init = NULL,
-  mu_beta_0 = NULL, sigma_beta_0_inv = NULL, precision_beta = 1,
-  eps = 1e-15, verb = FALSE, debug_verb = FALSE)
+bpwpm2_gibbs(Y, X, M, J, K, draws = 10^3, tau = NULL,
+  beta_init = NULL, mu_beta_0 = NULL, sigma_beta_0_inv = NULL,
+  precision_beta = 1, eps = 1e-15, verb = FALSE,
+  debug_verb = FALSE)
 }
 \arguments{
 \item{Y}{Response vector of n binary observatios (integers 0,1 - vector of

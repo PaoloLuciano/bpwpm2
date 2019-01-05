@@ -2,9 +2,10 @@
 % Please edit documentation in R/plot_funcs.R
 \name{plot_chains}
 \alias{plot_chains}
-\title{Plot MCMC Chains}
+\title{------------------------------------------------------------------------------
+Plot MCMC Chains}
 \usage{
-plot_chains(mcmc_chain, n = 100, title = "")
+plot_chains(mcmc_chain, n = 100, title = "", ...)
 }
 \arguments{
 \item{mcmc_chain}{An MCMC Chain matrix. (draws * number of params)}
@@ -12,6 +13,8 @@ plot_chains(mcmc_chain, n = 100, title = "")
 \item{n}{Number of draws to plot}
 
 \item{title}{Title for the plot}
+
+\item{...}{additional parameters to be passed to the functions}
 }
 \value{
 A ggplot2 lines plot

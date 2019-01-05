@@ -4,18 +4,25 @@
 \alias{plot_ergodic_mean}
 \title{Plot Ergodic Mean}
 \usage{
-plot_ergodic_mean(object, thin = 0, burn_in = 0, ...)
+plot_ergodic_mean(object, n = 1000, thin = 0, burn_in = 0, ...)
 }
 \arguments{
+\item{object}{of the class bpwpm}
+
+\item{n}{number of draws to plot (the function plots from the end, ie:
+n = 100 will plot the last 100 draws of the chain)}
+
 \item{thin}{A thinning parameter for the MCMC Chain}
 
 \item{burn_in}{A burn in parameter for the MCMC Chain}
+
+\item{...}{additional parameters to be passed to the functions}
 }
 \value{
 A series of plots for the ergodic mean of the parameters
 }
 \description{
-Plots the Ergodic Mean of an object of class \code{bpwpm}
+Plots the Ergodic Mean of either a matrix of parameters or a bpwpm2 object.
 }
 \examples{
 (model1, 0, 0)

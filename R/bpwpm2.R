@@ -59,10 +59,10 @@ bpwpm2_gibbs <- function(Y, X, M, J, K,
     d <- dim_X[2] # Number of covariables
 
     N <- M * J - K * (J - 1) - 1 # Number of basis funcitons for each d
-    total_params <- 1 + d*N # Total number of parameters
+    lambda <- 1 + d*N # Total number of parameters
 
     if(is.null(beta_init)){
-        beta <- rep(1, times = total_params)
+        beta <- rep(1, times = lambda)
         temp_string <- paste("Utilizing standard initializing parameters")
     }else{
         beta <- beta_init
@@ -70,15 +70,15 @@ bpwpm2_gibbs <- function(Y, X, M, J, K,
     }
 
     if(is.null(mu_beta_0)){
-        mu_beta_0 <- rep(0, times = total_params)
+        mu_beta_0 <- rep(0, times = lambda)
     }
 
     if(is.null(sigma_beta_0_inv)){
-        sigma_beta_0_inv <- precision_beta * diag(total_params)
+        sigma_beta_0_inv <- precision_beta * diag(lambda)
     }
 
     # O.2 Dimension and parameters check
-    if(!all(identical(dim_X[1],length(Y)), K < M, M > 1, J > 1, K > 0, n > total_params)){
+    if(!all(identical(dim_X[1],length(Y)), K < M, M > 1, J > 1, K > 0, n > lambda)){
         stop("Error in dimensionalities or parameters")
         geterrmessage()
     }
@@ -91,7 +91,7 @@ bpwpm2_gibbs <- function(Y, X, M, J, K,
     }
 
     # 0.4 Basic Info print
-    info <- paste("\n\tBPWPM MODEL\n\t
+    info <- paste("\n\tBPWPM MODEL\n
                   \tDimensions and pararamters check\n\t",
                   "Algorithm based on d = ", d, " covariables", "\n\t",
                   "Number of nodes J - 1 = ", J - 1, "\n\t",
@@ -99,7 +99,7 @@ bpwpm2_gibbs <- function(Y, X, M, J, K,
                   "Order of continuity on derivatives K = ", K, "\n\t",
                   "Number of basis functions N = ", N, "\n\t",
                   "Number of observations n = ", n, "\n\t",
-                  "Total number of params = ", total_params, "\n\t",
+                  "Total number of params = ", lambda, "\n\t",
                   temp_string, "\n\n", sep = "")
     cat(info)
 
@@ -181,7 +181,7 @@ bpwpm2_gibbs <- function(Y, X, M, J, K,
 
     # 3.1 Naming Beta
     rownames(sim_beta) <- NULL
-    colnames(sim_beta) <- paste("beta_", seq(0, total_params - 1), sep = "")
+    colnames(sim_beta) <- paste("beta_", seq(0, lambda - 1), sep = "")
 
     model <- list(beta = data.frame(sim_beta),
                   Psi = Psi,
