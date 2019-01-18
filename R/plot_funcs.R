@@ -160,7 +160,7 @@ plot.bpwpm_prediction <- function(object, ...){
         geterrmessage()
     }
 
-    plot_each_F(object$Y, object$X, object$bpwpm_params)
+    plot_each_F(object$Y, object$X, object$bpwpm_params, ...)
 }
 
 #-------------------------------------------------------------------------------
@@ -182,7 +182,7 @@ plot.bpwpm_prediction <- function(object, ...){
 #' @return d plots for each dimention created using ggplot2
 #' @export
 #'
-plot_each_F <- function(Y, X, F_mat){
+plot_each_F <- function(Y, X, F_mat, jitter = FALSE, ...){
 
     # If bpwpm_params are passed down to the functions
     if(class(F_mat) == "bpwpm_params"){
@@ -198,9 +198,10 @@ plot_each_F <- function(Y, X, F_mat){
             J <- F_mat$J
             K <- F_mat$K
             d <- F_mat$d
+            n <- dim(X)[1]
             tau <- F_mat$tau
-            Phi <- calculate_Phi(X,M,J,K,d,tau, indep_terms = F_mat$indep_terms)
-            F_mat <- calculate_F(Phi, F_mat$w, d)
+            Psi <- calculate_Psi(X,M,J,K,n,d,tau)
+            F_mat <- calculate_F(Psi, F_mat$beta, d)
         }
     }
 
@@ -210,16 +211,31 @@ plot_each_F <- function(Y, X, F_mat){
         Y <- as.factor(Y)
     }
 
-    for(i in seq(1:d)){
-        p <- ggplot2::qplot(x = X[,i],  y = F_mat[,i+1],
-                            color = Y) +
-            xlab(paste("X_",i, sep = "")) +
-            ylab(paste("F_",i,"(X_",i,")",sep = ""))
-        print(p)
-        if(i != (d+1)){
-            readline(prompt="Press [enter] to view next plot")
+    if(!jitter){
+        for(i in seq(1:d)){
+            p <- ggplot2::qplot(x = X[,i],  y = F_mat[,i+1],
+                                color = Y) +
+                xlab(paste("X_",i, sep = "")) +
+                ylab(paste("F_",i,"(X_",i,")",sep = ""))
+            print(p)
+            if(i != (d+1)){
+                readline(prompt="Press [enter] to view next plot")
+            }
+        }
+    }else{
+        for(i in seq(1:d)){
+            p <- ggplot2::qplot(x = X[,i],  y = F_mat[,i+1],
+                                color = Y) +
+                xlab(paste("X_",i, sep = "")) +
+                ylab(paste("F_",i,"(X_",i,")",sep = "")) +
+                geom_jitter()
+            print(p)
+            if(i != (d+1)){
+                readline(prompt="Press [enter] to view next plot")
+            }
         }
     }
+
 }
 
 # Methods for ploting 2D Graphs
@@ -320,7 +336,7 @@ plot_2D_data <- function(Y,X, f_transform = FALSE){
             geom_point() + xlab("X_1") + ylab("X_2")
     }else{
         ggplot2::ggplot(data = X, aes(x = X[, 1], y = X[ ,2], col = Y)) +
-            geom_point() + xlab("f(X_1)") + ylab("f(X_2)")
+            geom_point() + xlab("f_1(X_1)") + ylab("f_2(X_2)")
     }
 }
 

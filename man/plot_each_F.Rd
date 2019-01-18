@@ -4,7 +4,7 @@
 \alias{plot_each_F}
 \title{Plots each dimention f(x)}
 \usage{
-plot_each_F(Y, X, F_mat)
+plot_each_F(Y, X, F_mat, jitter = FALSE, ...)
 }
 \arguments{
 \item{Y}{A vector of binary response. Can be encoded as either a factor

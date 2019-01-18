@@ -44,7 +44,7 @@ predict.bpwpm <- function(object, new_Y, new_X,
         new_Y <- as.integer(new_Y) - 1
     }
 
-    post_params <- posterior_params(object, thin, burn_in, type)
+    post_params <- posterior_params(object, burn_in = burn_in, thin = thin, type)
     p <- posterior_probs(new_X, post_params)
 
     model_predict <- list(info = object$info,
