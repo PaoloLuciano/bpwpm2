@@ -40,6 +40,7 @@
 #' the summary function.}
 #' }
 #' @export
+#' @import mvtnorm
 #'
 #' @examples See the main document of thesis for a couple of full examples
 #' with its corresponding analysis.

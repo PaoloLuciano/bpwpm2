@@ -17,6 +17,7 @@
 #'
 #' @return a series of line plots and histograms
 #' @export
+#' @import ggplot2
 #'
 #' @examples (model1, 1000), (model2, 2000)
 plot.bpwpm <- function(object, n = 1000, m = 5, ...){
@@ -65,6 +66,7 @@ plot.bpwpm <- function(object, n = 1000, m = 5, ...){
 #'
 #' @return A series of plots for the ergodic mean of the parameters
 #' @export
+#' @import ggplot2
 #'
 #' @examples (model1, 0, 0)
 plot_ergodic_mean <- function(object, n = 1000, thin = 0, burn_in = 0, ...){
@@ -96,6 +98,7 @@ plot_ergodic_mean <- function(object, n = 1000, thin = 0, burn_in = 0, ...){
 #'
 #' @return A ggplot2 lines plot
 #' @export
+#' @import ggplot2
 #'
 #' @examples plot_chains(betas), plot_chains(w_j, 1000)
 plot_chains <- function(mcmc_chain, n = 100, title = "", ...){
@@ -122,6 +125,7 @@ plot_chains <- function(mcmc_chain, n = 100, title = "", ...){
 #'
 #' @return A histogram for the n draws and parameters of the chain
 #' @export
+#' @import ggplot2
 #'
 plot_hist <- function(mcmc_chain, number = 100, title = "", ...){
 
@@ -150,6 +154,7 @@ plot_hist <- function(mcmc_chain, number = 100, title = "", ...){
 #'
 #' @return a series of plots from ggplot2
 #' @export
+#' @import ggplot2
 #'
 #' @examples (train_set_prediciton),
 #'  (test_set_prediciton)
@@ -181,6 +186,7 @@ plot.bpwpm_prediction <- function(object, ...){
 #'
 #' @return d plots for each dimention created using ggplot2
 #' @export
+#' @import ggplot2
 #'
 plot_each_F <- function(Y, X, F_mat, jitter = FALSE, ...){
 
@@ -259,6 +265,7 @@ plot_each_F <- function(Y, X, F_mat, jitter = FALSE, ...){
 #'
 #' @return A series of 3 plots to help ilustrate the model
 #' @export
+#' @import ggplot2
 #'
 plot_2D <- function(Y, X, bpwpm_params, n = 10, alpha = 0.6,
                     m = 5, fof0 = TRUE){
@@ -314,6 +321,7 @@ plot_2D <- function(Y, X, bpwpm_params, n = 10, alpha = 0.6,
 #'
 #' @return A ggplot2 scatter plot
 #' @export
+#' @import ggplot2
 #'
 #' @examples (Y = rbinom(100, 1, 4), X = cbind(rnorm(100), rnorm(100)))
 plot_2D_data <- function(Y,X, f_transform = FALSE){
@@ -354,6 +362,7 @@ plot_2D_data <- function(Y,X, f_transform = FALSE){
 #'
 #' @return A ggplot2 scatter plot
 #' @export
+#' @import ggplot2
 #'
 plot_2D_proj <- function(Y, X, bpwpm_params, n = 15, alpha = 0.6){
 
@@ -402,6 +411,7 @@ plot_2D_proj <- function(Y, X, bpwpm_params, n = 15, alpha = 0.6){
 #'
 #' @return a 3D WireFrame Lattice Plot
 #' @export
+#' @import ggplot2
 #'
 plot_3D_proj <- function(X, bpwpm_params, m, fof0 = TRUE){
 
@@ -454,6 +464,7 @@ plot_3D_proj <- function(X, bpwpm_params, m, fof0 = TRUE){
 #'
 #' @return A plot of F1(X1) and F2(X2)
 #' @export
+#' @import ggplot2
 #'
 #' @examples
 plot_2D_F <- function(Y, bpwpm_params){
